@@ -15,29 +15,21 @@ public class Empleado {
     }
 
     public double calcularSalario() {
-        double salarioTotal = salarioBase;
-        if (salarioBase>0) {
-            if (horasTrabajadas >= 0) {
-                // Horas trabajadas normales = 40;
-                if (horasTrabajadas > 40) {
-                    salarioTotal += (horasTrabajadas - 40) * 50; // Pago de horas extra
-                }
-            }else {
-                throw new IllegalArgumentException("Las horas trabajadas deben ser mayor o igual a 0");
-            }
-        } else {
+        if (salarioBase <= 0) {
             throw new IllegalArgumentException("El salario debe ser mayor o igual a 0");
         }
-        switch (departamento) {
-            case "Sistemas":
-                salarioTotal += 20;
-                break;
-            case "Contabilidad":
-                salarioTotal += 10;
-                break;
-            default:
-                break;
+
+        if (horasTrabajadas < 0) {
+            throw new IllegalArgumentException("Las horas trabajadas deben ser mayor o igual a 0");
         }
+
+        double salarioTotal = salarioBase;
+
+        if (horasTrabajadas > 40) {
+            salarioTotal += (horasTrabajadas - 40) * 50; // Pago de horas extra
+        }
+
+        salarioTotal += departamento.calcularAjuste();
         return salarioTotal;
     }
 
