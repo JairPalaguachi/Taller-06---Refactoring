@@ -13,7 +13,13 @@ public class Empleado {
         this.departamento = departamento;
         this.genero = genero;
     }
-
+    public void imprimirDetalles() {
+        System.out.println("Nombre: " + this.getNombre());
+        System.out.println("Genero: " + this.getNombre());
+        System.out.println("Salario: " + this.getSalarioBase());
+        System.out.println("Horas trabajadas: " + this.getHorasTrabajadas());
+        System.out.println("Departamento: " + this.getDepartamento());
+    }
     public double calcularSalario() {
         validarSalarioYHoras(); // Validar entradas
 
