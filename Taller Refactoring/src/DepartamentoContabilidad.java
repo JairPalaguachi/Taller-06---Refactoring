@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package javaapplication7;
+
 
 /**
  *
@@ -13,4 +13,10 @@ public class DepartamentoContabilidad extends Departamento {
     public double calcularAjuste() {
         return 10;
     }
+
+    @Override
+    public String toString() {
+        return "Departamento Contabilidad";
+    }
+    
 }
