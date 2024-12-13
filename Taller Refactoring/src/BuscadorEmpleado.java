@@ -10,5 +10,15 @@ public class BuscadorEmpleado {
         return null;
     }
 
+    public static List<Empleado> obtenerEmpleadosPorHorasTrabajadasaPartirDe(List<Empleado> empleados, int horas) {
+        List<Empleado> empleadosPorTipo = new ArrayList<>();
+        for (Empleado empleado : empleados) {
+            if (empleado.getHorasTrabajadas() > horas) {
+                empleadosPorTipo.add(empleado);
+            }
+        }
+        return empleadosPorTipo;
+    }
+
     // Más metodos
 }
