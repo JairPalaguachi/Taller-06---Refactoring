@@ -15,22 +15,29 @@ public class Empleado {
     }
 
     public double calcularSalario() {
+        validarSalarioYHoras(); // Validar entradas
+
+        double salarioTotal = salarioBase;
+        salarioTotal += calcularHorasExtras(); // Calcular horas extras
+        salarioTotal += departamento.calcularAjuste(); // Aplicar ajuste por departamento
+
+        return salarioTotal;
+    }
+
+    private void validarSalarioYHoras() {
         if (salarioBase <= 0) {
             throw new IllegalArgumentException("El salario debe ser mayor o igual a 0");
         }
-
         if (horasTrabajadas < 0) {
             throw new IllegalArgumentException("Las horas trabajadas deben ser mayor o igual a 0");
         }
+    }
 
-        double salarioTotal = salarioBase;
-
+    private double calcularHorasExtras() {
         if (horasTrabajadas > 40) {
-            salarioTotal += (horasTrabajadas - 40) * 50; // Pago de horas extra
+            return (horasTrabajadas - 40) * 50; // Pago de horas extra
         }
-
-        salarioTotal += departamento.calcularAjuste();
-        return salarioTotal;
+        return 0;
     }
 
     public String getNombre() {
